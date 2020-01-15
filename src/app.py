@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import json
+
 from aiohttp import web
 
 MIRROR_URL = "https://npm.taobao.org/mirrors/python"
@@ -19,6 +21,9 @@ def load_versions():
         if len(line.split(" ")) == 2:
             version, sha2name = line.split(" ")
             VERSION_MAP[sha2name] = (version, "tgz")
+
+    with open("src/versions.json", "w") as fp:
+        json.dump(VERSION_MAP, fp)
 
 
 async def handle(request):
