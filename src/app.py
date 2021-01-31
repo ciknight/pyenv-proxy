@@ -4,7 +4,7 @@ import json
 
 from aiohttp import web
 
-MIRROR_URL = "https://npm.taobao.org/mirrors/python"
+MIRROR_URL = "https://cdn.npm.taobao.org/dist/python"
 VERSION_MAP: dict = {}
 
 
@@ -24,6 +24,8 @@ def load_versions():
 
     with open("src/versions.json", "w") as fp:
         json.dump(VERSION_MAP, fp)
+
+    return VERSION_MAP
 
 
 async def handle(request):
