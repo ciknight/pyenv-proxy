@@ -10,6 +10,6 @@ chardet==3.0.4
 gunicorn==20.0.4
 idna==2.8
 multidict==4.7.4
-pycares==3.1.1
+pycares==4.2.0
 pycparser==2.19
 yarl==1.4.2
