@@ -1,16 +1,15 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import json
 
 from aiohttp import web
 
-MIRROR_URL = "https://cdn.npm.taobao.org/dist/python"
+MIRROR_URL = "https://cdn.npmmirror.com/binaries/python"
 VERSION_MAP: dict = {}
 
 
 def load_versions():
     global VERSION_MAP
-    with open("src/versions.map", "r") as fp:
+    with open("versions.map", "r") as fp:
         lines = [line.strip() for line in fp.readlines() if line.strip()]
 
     for line in lines:
@@ -22,7 +21,7 @@ def load_versions():
             version, sha2name = line.split(" ")
             VERSION_MAP[sha2name] = (version, "tgz")
 
-    with open("src/versions.json", "w") as fp:
+    with open("versions.json", "w") as fp:
         json.dump(VERSION_MAP, fp)
 
     return VERSION_MAP
@@ -38,5 +37,9 @@ async def handle(request):
 
 
 load_versions()
+
 app = web.Application()
 app.add_routes([web.get("/{sha2name}", handle)])
+
+if __name__ == "__main__":
+    web.run_app(app, port=10000)
