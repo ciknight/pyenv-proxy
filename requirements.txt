@@ -12,7 +12,7 @@ frozenlist==1.7.0; python_version >= '3.9'
 idna==3.10; python_version >= '3.6'
 multidict==6.6.3; python_version >= '3.9'
 propcache==0.3.2; python_version >= '3.9'
-pycares==4.3.0
+pycares==4.9.0
 pycparser==2.21
 typing-extensions==4.14.1; python_version >= '3.9'
 yarl==1.20.1; python_version >= '3.9'
